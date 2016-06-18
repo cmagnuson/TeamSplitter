@@ -1,0 +1,41 @@
+buildscript {
+   repositories {
+        jcenter()
+    }
+
+    dependencies {
+        // Add dependency for build script,
+        // so we can access Git from our
+        // build script.
+        classpath 'org.ajoberstar:grgit:1.1.0'
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin:'application'
+
+ext {
+	// Open the Git repository in the current directory.
+	git = org.ajoberstar.grgit.Grgit.open(file('.'))
+
+	// Get commit id of HEAD.
+	revision = git.head().id
+	// Alternative is using abbreviatedId of head() method.
+	// revision = git.head().abbreviatedId
+}
+
+mainClassName = 'TeamSplitter'
+project.version = "1.1.${git.head().abbreviatedId}"
+
+sourceCompatibility=1.7
+targetCompatibility=1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.4'
+	compile 'com.google.guava:guava:19.0'
+	compile 'com.xlson.groovycsv:groovycsv:1.1'
+}
