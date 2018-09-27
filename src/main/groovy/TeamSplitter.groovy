@@ -68,7 +68,7 @@ public class TeamSplitter {
 			outFile.write(header+"\r\n");
 			
 			//write all blank entries to first file
-			for(String value: bibToRunners.get("")){
+			for(String value: new ArrayList(bibToRunners.get(""))){
 				outFile.append(value+"\r\n");
 				bibToRunners.remove("", value);
 			}
