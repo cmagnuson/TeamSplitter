@@ -25,7 +25,7 @@ ext {
 }
 
 mainClassName = 'TeamSplitter'
-project.version = "1.1.${git.head().abbreviatedId}"
+project.version = "1.2.${git.head().abbreviatedId}"
 
 sourceCompatibility=1.7
 targetCompatibility=1.7
